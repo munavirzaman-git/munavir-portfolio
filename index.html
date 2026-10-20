@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Munavir Zaman | Robotics Software Engineer</title>
+<title>Munavir Zaman | Autonomous Vehicles Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -146,12 +146,14 @@ section { position: relative; z-index: 1; }
 .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--ink), rgba(0,200,232,0.08)); }
 .titem { position: relative; margin-bottom: 40px; }
 .tdot { position: absolute; left: -33px; top: 6px; width: 9px; height: 9px; background: var(--ink); border-radius: 50%; box-shadow: 0 0 10px var(--ink); }
+.tdot.now { background: var(--emerald); box-shadow: 0 0 12px var(--emerald); animation: blink 2s ease infinite; }
 .tcard { border: 1px solid var(--line); border-radius: 3px; padding: 28px; background: var(--card); transition: border-color 0.3s; }
 .tcard:hover { border-color: var(--line-hi); }
 .tmeta { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
 .t-title { font-family: 'Sora', sans-serif; font-size: 1.02rem; font-weight: 700; color: #fff; margin-bottom: 4px; letter-spacing: -0.2px; }
 .t-org { font-family: 'IBM Plex Mono', monospace; font-size: 0.63rem; color: var(--ink); letter-spacing: 1px; }
 .t-dur { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--text-dim); border: 1px solid var(--line); padding: 4px 11px; border-radius: 2px; white-space: nowrap; }
+.t-dur.now { color: var(--emerald); border-color: rgba(0,212,138,0.35); }
 .t-collab { font-size: 0.82rem; color: var(--gold); font-weight: 600; margin-bottom: 13px; }
 .t-desc { color: var(--text-mid); line-height: 1.75; margin-bottom: 16px; font-size: 0.92rem; }
 .t-sub { font-family: 'IBM Plex Mono', monospace; font-size: 0.58rem; letter-spacing: 2.5px; color: var(--ink); text-transform: uppercase; margin: 16px 0 8px; display: flex; align-items: center; gap: 9px; }
@@ -249,6 +251,12 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.72s ease, transform 0.72s ease; }
 .reveal.on { opacity: 1; transform: translateY(0); }
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+  .sk-fill { width: var(--w); }
+}
+
 @media (max-width: 900px) {
   .about-grid, .contact-grid, .wide-body { grid-template-columns: 1fr; }
   .skills-grid, .community-grid { grid-template-columns: 1fr 1fr; }
@@ -278,10 +286,10 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
     <a href="#" class="nav-brand">Munavir <span>Zaman</span></a>
     <ul class="nav-links">
       <li><a href="#about">about</a></li>
-      <li><a href="#education">education</a></li>
-      <li><a href="#skills">skills</a></li>
       <li><a href="#experience">exp</a></li>
       <li><a href="#projects">projects</a></li>
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#education">education</a></li>
       <li><a href="#publication">research</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
@@ -292,19 +300,20 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge"><span class="bdot"></span>Open to Work · Calicut, Kerala, India</div>
+    <div class="hero-badge"><span class="bdot"></span>Research Engineer · IIT Bombay · Honda-sponsored ADAS</div>
     <h1 class="hero-name">Munavir<br><span>Zaman</span></h1>
-    <div class="hero-role">Robotics Software Engineer</div>
+    <div class="hero-role">Autonomous Vehicles Engineer · Vehicle Control · Robotics</div>
     <p class="hero-desc">
-      Specialising in control systems architecture, sensor fusion, and autonomous navigation pipelines — building robots that are robust, reliable, and deployable in unstructured real-world environments.
+      I build autonomous driving and vehicle control software — from CARLA-based ADAS simulation pipelines and adaptive controllers to ROS 2 navigation stacks validated on real tractors in the field.
     </p>
     <div class="hero-chips">
-      <span class="chip">Autonomous Navigation</span>
-      <span class="chip">Control Systems Design</span>
-      <span class="chip">Sensor Fusion · EKF</span>
-      <span class="chip">Path Planning · A*</span>
-      <span class="chip">Deep Learning Perception</span>
-      <span class="chip">Mobile Manipulation</span>
+      <span class="chip">CARLA · ADAS Simulation</span>
+      <span class="chip">Adaptive Control · MRAC</span>
+      <span class="chip">Path Tracking · Stanley</span>
+      <span class="chip">Predictive Control</span>
+      <span class="chip">LiDAR Perception</span>
+      <span class="chip">ROS 2 Navigation</span>
+      <span class="chip">Coverage Path Planning</span>
     </div>
     <div class="hero-actions">
       <a href="resume.pdf" class="btn-main">↓ Download Resume</a>
@@ -313,8 +322,8 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
     </div>
   </div>
   <div class="hero-kpis">
-    <div class="kpi"><span class="kpi-val">1.3<small style="font-size:0.85rem">yr</small></span><span class="kpi-lbl">Industry R&D</span></div>
-    <div class="kpi"><span class="kpi-val">5+</span><span class="kpi-lbl">Core Projects</span></div>
+    <div class="kpi"><span class="kpi-val">2</span><span class="kpi-lbl">IIT R&amp;D Roles</span></div>
+    <div class="kpi"><span class="kpi-val">2</span><span class="kpi-lbl">Industry Sponsors</span></div>
     <div class="kpi"><span class="kpi-val">1</span><span class="kpi-lbl">Publication</span></div>
     <div class="kpi"><span class="kpi-val">M.Tech</span><span class="kpi-lbl">Robotics</span></div>
   </div>
@@ -332,15 +341,15 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
     </div>
     <div class="about-grid">
       <div class="about-body reveal">
-        <p>I'm a <strong>Robotics Software Engineer</strong> based in Calicut, Kerala, holding an M.Tech in Robotics and Automation from the <strong>College of Engineering Trivandrum (CET)</strong> — one of Kerala's most prestigious technical institutions. My core expertise lies at the intersection of <strong>control systems design</strong>, <strong>sensor fusion</strong>, and <strong>autonomous navigation</strong>.</p>
-        <p>At <strong>IIT Palakkad's Technology Innovation Hub</strong>, I spent 1.3 years as an R&D Engineer building the full autonomous navigation stack for an agricultural tractor platform in collaboration with <strong>Mahindra &amp; Mahindra</strong> and <strong>CDAC Hyderabad</strong>. I designed and benchmarked five path tracking controllers — Stanley, Pure Pursuit, LQR, MPC, and PID — and built a full EKF sensor fusion pipeline in real agricultural field conditions.</p>
-        <p>I also completed an internship at <strong>Asimov Robotics, Kochi</strong> — one of Kerala's best-known robotics companies, recognised for their humanoid and service robot platforms deployed across hospitals and public venues in India. This gave me direct exposure to production-grade robotic software.</p>
-        <p>I thrive on building complete robotic systems that are <strong>robust in real unstructured environments</strong>, where theory alone is never enough.</p>
+        <p>I'm an <strong>Autonomous Vehicles Engineer</strong> from Kozhikode, Kerala, working across autonomous driving, ADAS simulation, vehicle control, and robotics — in both simulation and real-world environments. I hold an M.Tech in Robotics and Automation Engineering from the <strong>College of Engineering Trivandrum (CET)</strong>.</p>
+        <p>I'm currently a <strong>Research Engineer at IIT Bombay</strong> on a <strong>Honda Cars India Ltd.</strong> sponsored project, building a CARLA-based autonomous driving pipeline — road and lane geometry extraction, LiDAR processing, object tracking, Stanley path tracking, and adaptive control using MRAC with Lyapunov-based parameter adaptation.</p>
+        <p>Before that, at <strong>IIT Palakkad</strong> with <strong>Mahindra &amp; Mahindra</strong>, I developed ROS 2 navigation and control software for an autonomous agricultural tractor — field coverage planning, trajectory generation, GNSS/RTK + IMU + LiDAR integration, and controller evaluation through real field trials.</p>
+        <p>My foundation is vehicle kinematics, path planning, control systems, and sensor integration, written in <strong>Python and C++</strong>.</p>
         <div class="about-pillars">
-          <div class="pillar"><div class="p-icon">🎓</div><div class="p-lbl">Education</div><div class="p-val">M.Tech Robotics & Automation</div></div>
-          <div class="pillar"><div class="p-icon">🏛️</div><div class="p-lbl">Institution</div><div class="p-val">College of Engineering Trivandrum</div></div>
-          <div class="pillar"><div class="p-icon">💼</div><div class="p-lbl">Last Role</div><div class="p-val">R&D Engineer — IIT Palakkad TIH</div></div>
-          <div class="pillar"><div class="p-icon">📍</div><div class="p-lbl">Location</div><div class="p-val">Calicut, Kerala, India</div></div>
+          <div class="pillar"><div class="p-icon">💼</div><div class="p-lbl">Current Role</div><div class="p-val">Research Engineer — IIT Bombay</div></div>
+          <div class="pillar"><div class="p-icon">🚗</div><div class="p-lbl">Sponsor</div><div class="p-val">Honda Cars India Ltd.</div></div>
+          <div class="pillar"><div class="p-icon">🎓</div><div class="p-lbl">Education</div><div class="p-val">M.Tech Robotics &amp; Automation, CET</div></div>
+          <div class="pillar"><div class="p-icon">📍</div><div class="p-lbl">Home</div><div class="p-val">Kozhikode, Kerala, India</div></div>
         </div>
       </div>
       <div class="about-visual reveal">
@@ -348,111 +357,12 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
         <div class="stack-box">
           <div class="stack-lbl">// Core Stack</div>
           <div class="stack-tags">
-            <span class="stag">ROS1/ROS2</span><span class="stag">Python</span><span class="stag">C++</span><span class="stag">MATLAB</span>
-            <span class="stag">YOLOv8</span><span class="stag">OpenCV</span><span class="stag">PyTorch</span><span class="stag">OSQP</span>
-            <span class="stag">Gazebo</span><span class="stag">RViz</span><span class="stag">MoveIt</span><span class="stag">RealSense</span>
-            <span class="stag">LiDAR</span><span class="stag">EKF</span><span class="stag">SLAM</span><span class="stag">AMCL</span>
-            <span class="stag">Arduino</span><span class="stag">RPi</span><span class="stag">Dynamixel</span>
+            <span class="stag">CARLA</span><span class="stag">ROS 2</span><span class="stag">Python</span><span class="stag">C++</span>
+            <span class="stag">Stanley</span><span class="stag">Adaptive Stanley</span><span class="stag">MRAC</span><span class="stag">Lyapunov Adaptation</span>
+            <span class="stag">Predictive Control</span><span class="stag">PID</span><span class="stag">LiDAR</span><span class="stag">Object Tracking</span>
+            <span class="stag">GNSS/RTK</span><span class="stag">IMU</span><span class="stag">TF2</span><span class="stag">Nav Stack</span>
+            <span class="stag">Gazebo</span><span class="stag">RViz</span><span class="stag">URDF/Xacro</span><span class="stag">OpenCV</span><span class="stag">YOLOv8</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- EDUCATION -->
-<section id="education" class="wrap alt">
-  <div class="container">
-    <div class="reveal">
-      <div class="eyebrow">02 // Academic</div>
-      <h2 class="sec-title">Education &amp; <span>Background</span></h2>
-    </div>
-    <div class="edu-grid">
-      <div class="edu-card reveal">
-        <div class="edu-icon">🎓</div>
-        <div class="edu-degree">M.Tech — Robotics &amp; Automation</div>
-        <div class="edu-inst">College of Engineering Trivandrum (CET)</div>
-        <div class="edu-yr">2021 – 2023</div>
-        <p class="edu-detail">Specialised in autonomous systems, control theory, motion planning, and robotic perception. Thesis on mobile manipulation for autonomous fruit harvesting — integrating YOLOv8 perception with RealSense depth sensing and inverse kinematics for end-effector targeting. CET is one of Kerala's oldest and most respected engineering institutions (est. 1939), affiliated to APJ Abdul Kalam Technological University.</p>
-        <div class="edu-tags">
-          <span class="etag">Control Systems</span><span class="etag">Robotics</span><span class="etag">Motion Planning</span><span class="etag">Computer Vision</span><span class="etag">Sensor Fusion</span>
-        </div>
-      </div>
-      <div class="edu-card reveal">
-        <div class="edu-icon">⚙️</div>
-        <div class="edu-degree">B.Tech — Electronics and Instrumentation Engineering</div>
-        <div class="edu-inst">Government Engineering College Calicut (GECK)</div>
-        <div class="edu-yr">2017 – 2021</div>
-        <p class="edu-detail">Strong foundation in engineering mechanics, dynamics, thermodynamics, and CAD/CAM. Early exposure to embedded systems and mechatronics pivoted interest toward robotics. GECC is one of Calicut's top engineering colleges affiliated to the University of Calicut — a hub for engineering talent in northern Kerala.</p>
-        <div class="edu-tags">
-          <span class="etag">Instrumentation Eng.</span><span class="etag">Dynamics</span><span class="etag">Mechatronics</span><span class="etag">CAD/CAM</span><span class="etag">University of Calicut</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SKILLS -->
-<section id="skills" class="wrap">
-  <div class="container">
-    <div class="reveal">
-      <div class="eyebrow">03 // Capabilities</div>
-      <h2 class="sec-title">Technical <span>Skills</span></h2>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-card reveal">
-        <div class="sk-icon">🤖</div><div class="sk-cat">Robotics Frameworks</div>
-        <div class="sk-rows">
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">ROS1 / ROS2</span><span class="sk-pct">95%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:95%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">Gazebo / RViz</span><span class="sk-pct">90%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:90%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">SLAM / Nav Stack</span><span class="sk-pct">87%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:87%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">MoveIt</span><span class="sk-pct">82%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:82%"></div></div></div>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="sk-icon">⚙️</div><div class="sk-cat">Control Systems</div>
-        <div class="sk-rows">
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">MPC (Constrained)</span><span class="sk-pct">90%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:90%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">Pure Pursuit / Stanley</span><span class="sk-pct">93%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:93%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">LQR / PID Design</span><span class="sk-pct">88%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:88%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">Trajectory Planning</span><span class="sk-pct">86%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:86%"></div></div></div>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="sk-icon">📡</div><div class="sk-cat">Sensor Fusion &amp; Localisation</div>
-        <div class="sk-rows">
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">EKF (LiDAR+IMU+Odom)</span><span class="sk-pct">88%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:88%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">SLAM (GMapping/Cartographer)</span><span class="sk-pct">85%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:85%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">AMCL / Particle Filter</span><span class="sk-pct">83%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:83%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">GPS/GNSS Integration</span><span class="sk-pct">87%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:87%"></div></div></div>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="sk-icon">👁️</div><div class="sk-cat">Perception &amp; AI</div>
-        <div class="sk-rows">
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">YOLOv8</span><span class="sk-pct">90%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:90%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">OpenCV</span><span class="sk-pct">88%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:88%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">PyTorch / CNN</span><span class="sk-pct">80%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:80%"></div></div></div>
-          <div class="sk-row"><div class="sk-head"><span class="sk-name">3D Depth Localisation</span><span class="sk-pct">85%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:85%"></div></div></div>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="sk-icon">💻</div><div class="sk-cat">Programming</div>
-        <div class="badges">
-          <span class="badge bc">Python</span><span class="badge bc">C++</span><span class="badge bc">C</span><span class="badge bc">MATLAB</span>
-          <span class="badge bg">ROS Nodes</span><span class="badge bg">OSQP Solver</span>
-          <span class="badge ba">Bash / Linux</span><span class="badge ba">Git</span>
-        </div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="sk-icon">🔧</div><div class="sk-cat">Hardware &amp; Sensors</div>
-        <div class="badges">
-          <span class="badge ba">Intel RealSense D435</span><span class="badge ba">LiDAR</span><span class="badge ba">IMU</span><span class="badge ba">GPS/GNSS</span><span class="badge ba">Encoders</span>
-          <span class="badge br">Dynamixel Servo</span><span class="badge br">Arduino</span><span class="badge br">Raspberry Pi</span>
         </div>
       </div>
     </div>
@@ -465,64 +375,92 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
 <section id="experience" class="wrap alt">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">04 // Career</div>
+      <div class="eyebrow">02 // Career</div>
       <h2 class="sec-title">Work <span>Experience</span></h2>
     </div>
     <div class="timeline">
+
       <div class="titem reveal">
-        <div class="tdot"></div>
+        <div class="tdot now"></div>
         <div class="tcard">
           <div class="tmeta">
             <div>
-              <div class="t-title">Robotics R&amp;D Engineer</div>
-              <div class="t-org">IIT Palakkad · Technology Innovation Hub (TIH)</div>
+              <div class="t-title">Research Engineer — Autonomous Vehicles / ADAS</div>
+              <div class="t-org">Indian Institute of Technology Bombay</div>
             </div>
-            <div class="t-dur">1.3 Years · 2023 – 2024</div>
+            <div class="t-dur now">2026 – Present</div>
           </div>
-          <div class="t-collab">⚡ Industry Collaboration: Mahindra &amp; Mahindra + CDAC Hyderabad</div>
-          <p class="t-desc">Led design and development of the full autonomous navigation stack for an agricultural tractor platform. Responsible for end-to-end robotics software — kinematic modelling, multi-controller design, sensor fusion, trajectory generation, and real field validation. IIT Palakkad TIH bridges academic robotics research with live industry development, making this one of the most technically demanding R&D environments in the Kerala/South India region.</p>
-          <div class="t-sub">Key Responsibilities</div>
+          <div class="t-collab">🚗 Sponsored Project: Honda Cars India Ltd.</div>
+          <p class="t-desc">Building a CARLA-based autonomous driving simulation pipeline for evaluating vehicle perception, trajectory tracking, and control algorithms in closed loop, in dynamic traffic scenarios.</p>
+          <div class="t-sub">Simulation Pipeline</div>
           <ul class="tlist">
-            <li>Designed kinematic and dynamic models for tractor motion including Ackermann steering geometry and nonholonomic constraints.</li>
-            <li>Developed row-following and waypoint-based path planning algorithms for structured agricultural environments.</li>
-            <li>Designed, implemented, and benchmarked five path tracking controllers: Stanley, Pure Pursuit (adaptive lookahead), LQR, MPC, and PID — with quantitative cross-track and heading error comparisons.</li>
-            <li>Built EKF-based localisation pipeline fusing LiDAR scan matching, IMU angular rates, and wheel odometry.</li>
-            <li>Integrated GPS/GNSS for absolute outdoor positioning with local odometry bridging between fixes.</li>
-            <li>Generated B-spline smooth trajectories from GPS waypoints with time-parameterised velocity profiles.</li>
-            <li>Validated navigation pipelines in Gazebo simulation before field deployment.</li>
+            <li>Developing a CARLA-based simulation pipeline for evaluating vehicle perception, trajectory tracking, and control algorithms.</li>
+            <li>Built modular components for vehicle spawning, road and lane geometry extraction, waypoint generation, LiDAR processing, object tracking, and vehicle control.</li>
+            <li>Integrated perception and control components for closed-loop autonomous driving simulation and evaluation in dynamic traffic.</li>
           </ul>
-          <div class="t-sub">Technical Contributions</div>
+          <div class="t-sub">Vehicle Control</div>
           <ul class="tlist">
-            <li>Implemented constrained MPC with OSQP solver in Python using linearised bicycle state-space model.</li>
-            <li>Deployed SLAM (GMapping) for mapping and AMCL for probabilistic localisation on the tractor platform.</li>
-            <li>Built modular ROS node architecture for sensor input, controller output, logging, and diagnostics.</li>
+            <li>Implemented Stanley-based path tracking on dynamically extracted road and lane geometry.</li>
+            <li>Working on adaptive vehicle control using MRAC with Lyapunov-based parameter adaptation.</li>
+            <li>Developing predictive control approaches that evaluate candidate steering and acceleration inputs.</li>
           </ul>
           <div class="impact-row">
-            <div class="impact"><div class="impact-ic">🎯</div><div class="impact-tx">5 controllers designed and benchmarked</div></div>
-            <div class="impact"><div class="impact-ic">📡</div><div class="impact-tx">Full EKF fusion pipeline deployed in field</div></div>
-            <div class="impact"><div class="impact-ic">🔬</div><div class="impact-tx">Industry-academia autonomous farming R&D</div></div>
+            <div class="impact"><div class="impact-ic">🛣️</div><div class="impact-tx">End-to-end CARLA ADAS pipeline</div></div>
+            <div class="impact"><div class="impact-ic">🧮</div><div class="impact-tx">MRAC with Lyapunov-based adaptation</div></div>
+            <div class="impact"><div class="impact-ic">🏭</div><div class="impact-tx">Industry-sponsored automotive R&amp;D</div></div>
           </div>
         </div>
       </div>
+
       <div class="titem reveal">
         <div class="tdot"></div>
         <div class="tcard">
           <div class="tmeta">
             <div>
-              <div class="t-title">Robotics Engineering Intern</div>
+              <div class="t-title">Robotics R&amp;D Engineer — Autonomous Tractor</div>
+              <div class="t-org">Indian Institute of Technology Palakkad</div>
+            </div>
+            <div class="t-dur">Dec 2024 – 2026</div>
+          </div>
+          <div class="t-collab">🌾 In collaboration with Mahindra &amp; Mahindra</div>
+          <p class="t-desc">Developed ROS 2-based autonomous navigation and control software for an agricultural tractor — covering path planning, trajectory generation, and vehicle control — validated in simulation and real-world field trials.</p>
+          <div class="t-sub">Planning &amp; Control</div>
+          <ul class="tlist">
+            <li>Implemented field coverage planning using swath generation and boustrophedon patterns for autonomous agricultural operations.</li>
+            <li>Implemented and evaluated PID, Stanley, and adaptive control approaches for vehicle trajectory tracking.</li>
+          </ul>
+          <div class="t-sub">Integration &amp; Validation</div>
+          <ul class="tlist">
+            <li>Integrated GNSS/RTK, IMU, LiDAR, and encoder-based vehicle information for navigation and control.</li>
+            <li>Developed ROS 2 nodes and interfaces connecting navigation, planning, and control modules; performed system-level debugging.</li>
+            <li>Validated autonomous navigation and control algorithms through simulation and real-world tractor field trials.</li>
+          </ul>
+          <div class="impact-row">
+            <div class="impact"><div class="impact-ic">🚜</div><div class="impact-tx">Real-world tractor field trials</div></div>
+            <div class="impact"><div class="impact-ic">🗺️</div><div class="impact-tx">Swath + boustrophedon coverage planning</div></div>
+            <div class="impact"><div class="impact-ic">📡</div><div class="impact-tx">GNSS/RTK, IMU, LiDAR, encoder integration</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="titem reveal">
+        <div class="tdot"></div>
+        <div class="tcard">
+          <div class="tmeta">
+            <div>
+              <div class="t-title">Robotics Engineer Intern</div>
               <div class="t-org">Asimov Robotics · Kochi, Kerala</div>
             </div>
-            <div class="t-dur">Internship · 2022</div>
+            <div class="t-dur">May 2023 – Jun 2023</div>
           </div>
-          <p class="t-desc">Internship at Asimov Robotics — one of Kerala's most recognised robotics companies, known for their humanoid robot MITRA deployed in hospitals, banks, and airports across India. Gained hands-on production robotics software experience and real hardware integration skills that shaped my approach to building reliable robotic systems.</p>
+          <p class="t-desc">Internship at Asimov Robotics, known for their service and humanoid robot platforms. Hands-on exposure to robotic software on real hardware.</p>
           <ul class="tlist">
-            <li>Worked on robotic arm control using ROS-based modular node architecture and custom controllers.</li>
-            <li>Implemented perception-to-actuation pipelines integrating camera sensors with joint control.</li>
-            <li>Debugged sensor integration, launch file configurations, and serial communication on real hardware.</li>
-            <li>Contributed to documentation and testing of robotic arm motion sequences.</li>
+            <li>Contributed to robotic arm motion control and ROS-based integration.</li>
+            <li>Performed system testing in both simulation and hardware environments.</li>
           </ul>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -533,47 +471,72 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
 <section id="projects" class="wrap">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">05 // Build</div>
+      <div class="eyebrow">03 // Build</div>
       <h2 class="sec-title">Featured <span>Projects</span></h2>
     </div>
     <div class="proj-grid">
 
       <div class="pcard wide reveal">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80" alt="Ackermann Robot" class="pimg">
+        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&q=80" alt="Road from a driving vehicle" class="pimg">
         <div class="pbody">
-          <div class="pnum">// PROJECT 01 · FEATURED</div>
-          <div class="ptitle">Ackermann Steering Robot — Full Autonomy Stack</div>
-          <div class="ppipe">LiDAR + IMU + Wheel Odom → EKF Fusion → SLAM / AMCL → A* Path Planning → Multi-Controller Comparison → Obstacle Detection</div>
+          <div class="pnum">// PROJECT 01 · FEATURED · IIT BOMBAY × HONDA</div>
+          <div class="ptitle">CARLA-Based ADAS &amp; Autonomous Driving Pipeline</div>
+          <div class="ppipe">Vehicle Spawn → Road / Lane Geometry → Waypoints → LiDAR Processing → Object Tracking → Stanley / MRAC / Predictive Control → Closed-Loop Evaluation</div>
           <div class="wide-body">
             <div>
-              <p class="pdesc">A complete autonomous navigation stack on an Ackermann-geometry robot — covering the full pipeline from multi-sensor EKF fusion and SLAM mapping, to A* planning, LiDAR obstacle detection, and a comprehensive five-controller design and benchmarking study.</p>
-              <div class="t-sub" style="margin-top:0">Sensor Fusion &amp; Localisation</div>
+              <p class="pdesc">A modular simulation pipeline for evaluating perception, trajectory tracking, and control of an autonomous vehicle in CARLA, including dynamic traffic scenarios.</p>
+              <div class="t-sub" style="margin-top:0">Perception &amp; Geometry</div>
               <ul class="plist">
-                <li>EKF fusing LiDAR scan matching, IMU, and wheel odometry for robust continuous pose estimation.</li>
-                <li>GMapping SLAM for simultaneous mapping and localisation in unknown environments.</li>
-                <li>AMCL particle filter for global localisation on a prior map.</li>
-                <li>GPS/GNSS outdoor positioning with local odometry bridging.</li>
+                <li>Road and lane geometry extracted dynamically from the simulator to generate reference waypoints.</li>
+                <li>LiDAR processing and object tracking integrated into the closed loop.</li>
+                <li>Modular components for spawning, sensing, and control so each block can be swapped and evaluated.</li>
               </ul>
             </div>
             <div>
-              <div class="t-sub" style="margin-top:0">Controller Design &amp; Benchmarking</div>
+              <div class="t-sub" style="margin-top:0">Control</div>
               <ul class="plist">
-                <li><strong style="color:var(--ink)">Stanley</strong> — heading + cross-track error front-axle law.</li>
-                <li><strong style="color:var(--ink)">Pure Pursuit</strong> — adaptive lookahead by speed and curvature.</li>
-                <li><strong style="color:var(--ink)">LQR</strong> — optimal state-space control on lateral + heading error.</li>
-                <li><strong style="color:var(--ink)">MPC</strong> — constrained receding horizon with bicycle model (OSQP).</li>
-                <li><strong style="color:var(--ink)">PID</strong> — classical cross-track error baseline.</li>
-                <li>Benchmarked on cross-track error, heading error, settling time, and CPU cost.</li>
-              </ul>
-              <div class="t-sub">Path Planning &amp; Obstacle Detection</div>
-              <ul class="plist">
-                <li>A* algorithm on occupancy grid with dynamic re-planning capability.</li>
-                <li>Real-time LiDAR obstacle detection with safety cost-field integration.</li>
+                <li><strong style="color:var(--ink)">Stanley</strong> — path tracking on extracted lane geometry.</li>
+                <li><strong style="color:var(--ink)">Adaptive Stanley / MRAC</strong> — Lyapunov-based parameter adaptation.</li>
+                <li><strong style="color:var(--ink)">Predictive control</strong> — evaluating candidate steering and acceleration inputs.</li>
+                <li>Closed-loop evaluation of adaptive path tracking in dynamic traffic.</li>
               </ul>
             </div>
           </div>
           <div class="ptags" style="margin-top:12px">
-            <span class="ptag">ROS</span><span class="ptag">EKF</span><span class="ptag">SLAM</span><span class="ptag">AMCL</span><span class="ptag">A*</span><span class="ptag">MPC</span><span class="ptag">LQR</span><span class="ptag">Stanley</span><span class="ptag">Pure Pursuit</span><span class="ptag">PID</span><span class="ptag">LiDAR</span><span class="ptag">OSQP</span>
+            <span class="ptag">CARLA</span><span class="ptag">Python</span><span class="ptag">LiDAR</span><span class="ptag">Object Tracking</span><span class="ptag">Stanley</span><span class="ptag">MRAC</span><span class="ptag">Lyapunov</span><span class="ptag">Predictive Control</span><span class="ptag">ADAS</span>
+          </div>
+          <div class="plinks">
+            <a href="https://github.com/munavirzaman-git" target="_blank" class="btn-xs btn-xs-pri">GitHub →</a>
+            <a href="#" class="btn-xs btn-xs-sec">Demo Video</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcard wide reveal">
+        <img src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=1200&q=80" alt="Tractor in a field" class="pimg">
+        <div class="pbody">
+          <div class="pnum">// PROJECT 02 · IIT PALAKKAD × MAHINDRA</div>
+          <div class="ptitle">Autonomous Tractor Navigation &amp; Control</div>
+          <div class="ppipe">Field Representation → Swath Generation → Boustrophedon Coverage → Trajectory Planning → PID / Stanley / Adaptive Tracking → Field Trials</div>
+          <div class="wide-body">
+            <div>
+              <p class="pdesc">An autonomous navigation pipeline for an agricultural tractor, from field representation through coverage planning to path tracking — taken from simulation to real fields.</p>
+              <ul class="plist">
+                <li>Field representation and swath generation for full-coverage operations.</li>
+                <li>Boustrophedon coverage patterns and trajectory generation.</li>
+                <li>ROS 2 nodes linking planning, navigation, and control.</li>
+              </ul>
+            </div>
+            <div>
+              <ul class="plist">
+                <li>PID, Stanley, and adaptive controllers evaluated for trajectory tracking.</li>
+                <li>GNSS/RTK, IMU, LiDAR, and encoder data integrated for navigation.</li>
+                <li>Validated in simulation and in real-world field environments.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ptags" style="margin-top:12px">
+            <span class="ptag">ROS 2</span><span class="ptag">Coverage Planning</span><span class="ptag">Boustrophedon</span><span class="ptag">Ackermann Kinematics</span><span class="ptag">Stanley</span><span class="ptag">PID</span><span class="ptag">Adaptive Control</span><span class="ptag">GNSS/RTK</span><span class="ptag">Gazebo</span>
           </div>
           <div class="plinks">
             <a href="https://github.com/munavirzaman-git" target="_blank" class="btn-xs btn-xs-pri">GitHub →</a>
@@ -585,28 +548,27 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
       <div class="pcard wide reveal">
         <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&q=80" alt="Mobile Manipulator" class="pimg">
         <div class="pbody">
-          <div class="pnum">// PROJECT 02 · M.TECH THESIS</div>
-          <div class="ptitle">Mobile Manipulator — Autonomous Fruit Ripeness Detection &amp; Picking</div>
-          <div class="ppipe">YOLOv8 → RealSense D435 Depth → 3D Localisation → IK Solver → Arm Motion → Gripper Actuation</div>
+          <div class="pnum">// PROJECT 03 · M.TECH THESIS</div>
+          <div class="ptitle">Autonomous Mobile Manipulator for Fruit Detection &amp; Picking</div>
+          <div class="ppipe">YOLOv8 → RealSense RGB-D Depth → 3D Localisation → IK Solver → Arm Motion → Gripper Actuation</div>
           <div class="wide-body">
             <div>
-              <p class="pdesc">End-to-end autonomous harvesting system integrating deep learning perception with robotic manipulation. Custom YOLOv8 classifies apple ripeness; RealSense D435 depth data computes 3D world coordinates feeding into an IK solver for precise end-effector targeting.</p>
+              <p class="pdesc">End-to-end harvesting system combining deep learning perception with robotic navigation and manipulation. YOLOv8 detects fruit; RGB-D depth gives 3D positions that feed an IK solver for end-effector targeting.</p>
               <ul class="plist">
-                <li>Custom YOLOv8 trained for apple ripeness classification with augmented dataset.</li>
-                <li>XYZ world coordinates from aligned depth frames and camera intrinsics.</li>
-                <li>Full perception-to-manipulation ROS pipeline.</li>
+                <li>YOLOv8 + RGB-D perception pipeline for real-time fruit detection.</li>
+                <li>3D position estimation from aligned depth frames and camera intrinsics using OpenCV.</li>
               </ul>
             </div>
             <div>
               <ul class="plist">
-                <li>Analytical inverse kinematics for accurate end-effector positioning.</li>
-                <li>Modular ROS node architecture enabling real-time detection throughput.</li>
-                <li>Validated on physical platform with successful autonomous pick-and-place trials.</li>
+                <li>Perception outputs integrated with ROS-based navigation and manipulation workflows.</li>
+                <li>Analytical inverse kinematics for end-effector positioning.</li>
+                <li>Pick-and-place trials on a physical platform.</li>
               </ul>
             </div>
           </div>
           <div class="ptags" style="margin-top:12px">
-            <span class="ptag">YOLOv8</span><span class="ptag">RealSense D435</span><span class="ptag">ROS</span><span class="ptag">PyTorch</span><span class="ptag">IK/FK</span><span class="ptag">OpenCV</span><span class="ptag">3D Localisation</span>
+            <span class="ptag">YOLOv8</span><span class="ptag">RealSense D435</span><span class="ptag">ROS</span><span class="ptag">OpenCV</span><span class="ptag">IK/FK</span><span class="ptag">3D Localisation</span>
           </div>
           <div class="plinks">
             <a href="https://github.com/munavirzaman-git" target="_blank" class="btn-xs btn-xs-pri">GitHub →</a>
@@ -615,70 +577,145 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
         </div>
       </div>
 
-      <div class="pcard wide reveal">
+      <div class="pcard reveal">
         <img src="https://images.unsplash.com/photo-1563207153-f403bf289096?w=1200&q=80" alt="Robotic Arm" class="pimg">
         <div class="pbody">
-          <div class="pnum">// PROJECT 03 · HARDWARE BUILD</div>
-          <div class="ptitle">3-DOF Robotic Arm — Sim-to-Real with Dynamixel Servos (ROS1 Noetic)</div>
-          <div class="ppipe">URDF → Gazebo Sim → MoveIt Planning → ROS1 Noetic → Dynamixel SDK → YOLOv8 + OpenCV → Pick &amp; Place</div>
-          <div class="wide-body">
-            <div>
-              <p class="pdesc">Custom 3-DOF arm with gripper DOF, built from URDF design through Gazebo simulation to real-time hardware deployment on Dynamixel servos, integrated with YOLOv8-based vision for autonomous pick-and-place.</p>
-              <div class="t-sub" style="margin-top:0">Simulation &amp; Planning</div>
-              <ul class="plist">
-                <li>URDF model with accurate link geometry, joint limits, and inertial parameters.</li>
-                <li>Gazebo validation with ROS1 Noetic and ros_control.</li>
-                <li>MoveIt for OMPL-based motion planning and collision avoidance.</li>
-                <li>FK for pose estimation; analytical IK for target-driven end-effector motion.</li>
-              </ul>
-            </div>
-            <div>
-              <div class="t-sub" style="margin-top:0">Real Hardware &amp; Perception</div>
-              <ul class="plist">
-                <li>Dynamixel geared servo motors via Dynamixel SDK for real-time position/velocity control.</li>
-                <li>Gripper DOF with configurable grasping for reliable object pick.</li>
-                <li>YOLOv8 real-time object detection for pick target coordinates.</li>
-                <li>OpenCV for pre-processing, ROI extraction, and coordinate transforms.</li>
-                <li>End-to-end ROS1 Noetic pipeline with latency optimisation.</li>
-                <li>Validated full autonomous pick-and-place with repeatable results on real hardware.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="ptags" style="margin-top:12px">
-            <span class="ptag">ROS1 Noetic</span><span class="ptag">Gazebo</span><span class="ptag">MoveIt</span><span class="ptag">URDF</span><span class="ptag">Dynamixel SDK</span><span class="ptag">FK / IK</span><span class="ptag">YOLOv8</span><span class="ptag">OpenCV</span><span class="ptag">3-DOF + Gripper</span>
+          <div class="pnum">// PROJECT 04 · HARDWARE BUILD</div>
+          <div class="ptitle">3-DOF Robotic Arm — Sim-to-Real with Dynamixel Servos</div>
+          <p class="pdesc">Custom 3-DOF arm with a gripper, taken from URDF design through Gazebo and MoveIt to real Dynamixel hardware, with YOLOv8 vision for autonomous pick-and-place.</p>
+          <ul class="plist">
+            <li>URDF with link geometry, joint limits, and inertial parameters; Gazebo + ros_control.</li>
+            <li>MoveIt (OMPL) planning; FK and analytical IK.</li>
+            <li>Dynamixel SDK position/velocity control; YOLOv8 + OpenCV target detection.</li>
+          </ul>
+          <div class="ptags">
+            <span class="ptag">ROS1 Noetic</span><span class="ptag">Gazebo</span><span class="ptag">MoveIt</span><span class="ptag">URDF</span><span class="ptag">Dynamixel</span><span class="ptag">YOLOv8</span>
           </div>
           <div class="plinks">
             <a href="https://github.com/munavirzaman-git" target="_blank" class="btn-xs btn-xs-pri">GitHub →</a>
-            <a href="#" class="btn-xs btn-xs-sec">Demo Video</a>
           </div>
         </div>
       </div>
 
-      <div class="pcard wide reveal">
+      <div class="pcard reveal">
         <div class="pbody">
-          <div class="wide-body">
-            <div>
-              <div class="pnum">// PROJECT 04 · PUBLISHED · HITA 2024</div>
-              <div class="ptitle">Apple Freshness Detection using YOLOv8</div>
-              <p class="pdesc">Research project resulting in a published paper at the International Conference on Hybrid Intelligence: Theories and Applications (HITA 2024), published by Springer. High-accuracy fruit freshness classification using YOLOv8 with custom dataset curation and augmentation.</p>
-              <a href="https://link.springer.com/chapter/10.1007/978-981-96-7753-5_18" target="_blank" class="btn-xs btn-xs-pri" style="display:inline-flex;margin-top:10px">📄 View on Springer →</a>
-            </div>
-            <div>
-              <ul class="plist" style="margin-top:0">
-                <li>Curated and annotated a custom apple freshness dataset with multiple freshness classes.</li>
-                <li>Applied offline augmentation (flip, rotate, colour jitter) to expand dataset diversity.</li>
-                <li>Tuned YOLOv8 hyperparameters: LR schedule, anchor sizes, mosaic augmentation.</li>
-                <li>Evaluated using mAP@0.5 and mAP@0.5:0.95 across IoU thresholds.</li>
-                <li>Presented at HITA 2024; published in Springer proceedings.</li>
-              </ul>
-              <div class="ptags">
-                <span class="ptag">YOLOv8</span><span class="ptag">Custom Dataset</span><span class="ptag">Augmentation</span><span class="ptag">mAP Evaluation</span><span class="ptag">Springer</span>
-              </div>
-            </div>
+          <div class="pnum">// PROJECT 05 · PUBLISHED · HITA 2024</div>
+          <div class="ptitle">Apple Freshness Detection using YOLOv8</div>
+          <p class="pdesc">Research project published at the International Conference on Hybrid Intelligence: Theories and Applications (HITA 2024), Springer LNNS — fruit freshness classification with a curated, augmented dataset.</p>
+          <ul class="plist">
+            <li>Custom annotated dataset with multiple freshness classes.</li>
+            <li>Offline augmentation and YOLOv8 hyperparameter tuning.</li>
+            <li>Evaluated with mAP@0.5 and mAP@0.5:0.95.</li>
+          </ul>
+          <div class="ptags">
+            <span class="ptag">YOLOv8</span><span class="ptag">Custom Dataset</span><span class="ptag">mAP Evaluation</span><span class="ptag">Springer</span>
+          </div>
+          <div class="plinks">
+            <a href="https://link.springer.com/chapter/10.1007/978-981-96-7753-5_18" target="_blank" class="btn-xs btn-xs-pri">📄 View on Springer →</a>
           </div>
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="wrap alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">04 // Capabilities</div>
+      <h2 class="sec-title">Technical <span>Skills</span></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="sk-icon">🚗</div><div class="sk-cat">Autonomous Driving &amp; ADAS</div>
+        <div class="sk-rows">
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">CARLA Simulation</span><span class="sk-pct">90%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:90%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">Lane Keeping / Path Tracking</span><span class="sk-pct">92%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:92%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">Trajectory Planning</span><span class="sk-pct">86%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:86%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">Vehicle Kinematics</span><span class="sk-pct">90%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:90%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-icon">⚙️</div><div class="sk-cat">Control Systems</div>
+        <div class="sk-rows">
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">Stanley / Adaptive Stanley</span><span class="sk-pct">93%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:93%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">MRAC / Lyapunov Adaptation</span><span class="sk-pct">85%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:85%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">Predictive Control</span><span class="sk-pct">80%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:80%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">PID Design</span><span class="sk-pct">92%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:92%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-icon">🤖</div><div class="sk-cat">Robotics Frameworks</div>
+        <div class="sk-rows">
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">ROS 2 (Nodes, Services, Actions, TF2)</span><span class="sk-pct">92%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:92%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">Navigation Stack</span><span class="sk-pct">85%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:85%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">Gazebo / RViz</span><span class="sk-pct">88%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:88%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">URDF / Xacro</span><span class="sk-pct">86%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:86%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-icon">📡</div><div class="sk-cat">Sensors &amp; Perception</div>
+        <div class="sk-rows">
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">LiDAR Processing</span><span class="sk-pct">86%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:86%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">GNSS/RTK · IMU · Encoders</span><span class="sk-pct">87%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:87%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">Object Tracking</span><span class="sk-pct">82%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:82%"></div></div></div>
+          <div class="sk-row"><div class="sk-head"><span class="sk-name">OpenCV / YOLOv8</span><span class="sk-pct">87%</span></div><div class="sk-bar"><div class="sk-fill" style="--w:87%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-icon">💻</div><div class="sk-cat">Programming</div>
+        <div class="badges">
+          <span class="badge bc">Python</span><span class="badge bc">C++</span><span class="badge bc">MATLAB</span>
+          <span class="badge bg">ROS 2 Nodes</span><span class="badge bg">CARLA Python API</span>
+          <span class="badge ba">Bash / Linux</span><span class="badge ba">Git</span><span class="badge ba">Docker</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="sk-icon">🧭</div><div class="sk-cat">Robotics Concepts</div>
+        <div class="badges">
+          <span class="badge ba">Robot Kinematics</span><span class="badge ba">Motion Planning</span><span class="badge ba">Coverage Planning</span>
+          <span class="badge br">Localization</span><span class="badge br">Mapping</span><span class="badge br">Sensor Fusion (EKF)</span>
+          <span class="badge bc">Ackermann Steering</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education" class="wrap">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">05 // Academic</div>
+      <h2 class="sec-title">Education &amp; <span>Background</span></h2>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-degree">M.Tech — Robotics &amp; Automation Engineering</div>
+        <div class="edu-inst">College of Engineering, Trivandrum (CET)</div>
+        <div class="edu-yr">2022 – 2024</div>
+        <p class="edu-detail">Focus on autonomous systems, control theory, motion planning, and robotic perception. Thesis on an autonomous mobile manipulator for fruit detection — YOLOv8 perception with RGB-D depth sensing and inverse kinematics for end-effector targeting.</p>
+        <div class="edu-tags">
+          <span class="etag">Control Systems</span><span class="etag">Robotics</span><span class="etag">Motion Planning</span><span class="etag">Computer Vision</span>
+        </div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-icon">⚙️</div>
+        <div class="edu-degree">B.Tech — Applied Electronics &amp; Instrumentation Engineering</div>
+        <div class="edu-inst">Government Engineering College, Kozhikode</div>
+        <div class="edu-yr">2018 – 2022</div>
+        <p class="edu-detail">Foundation in electronics, instrumentation, control, and embedded systems. Early work with sensors and microcontrollers steered my interest toward robotics.</p>
+        <div class="edu-tags">
+          <span class="etag">Instrumentation</span><span class="etag">Control</span><span class="etag">Embedded Systems</span><span class="etag">Sensors</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -695,13 +732,13 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
     <div class="pub reveal">
       <div class="pub-ic">📄</div>
       <div>
-        <div class="pub-venue">HITA 2024 · Springer · International Conference</div>
-        <div class="pub-title">A Novel Approach for Apple Freshness Detection using YOLOv8</div>
-        <p class="pub-abs">Proposed a deep learning-based detection pipeline using YOLOv8 for real-time apple freshness classification. The system leverages custom dataset preparation, targeted augmentation strategies, and hyperparameter optimisation to achieve high detection accuracy across multiple IoU thresholds — demonstrating the viability of YOLO-family models for agricultural quality assessment. Published in Springer proceedings at the International Conference on Hybrid Intelligence: Theories and Applications (HITA 2024).</p>
+        <div class="pub-venue">HITA 2024 · Springer LNNS · International Conference</div>
+        <div class="pub-title">A Novel Approach for Apple Freshness Detection Using YOLOv8</div>
+        <p class="pub-abs">A deep learning pipeline using YOLOv8 for real-time apple freshness classification, built on custom dataset preparation, targeted augmentation, and hyperparameter optimisation, evaluated across multiple IoU thresholds for agricultural quality assessment.</p>
         <div class="pub-meta">
           <div class="pub-mi"><div class="pub-dot"></div><span>International Conference on Hybrid Intelligence: Theories and Applications (HITA 2024)</span></div>
-          <div class="pub-mi"><div class="pub-dot"></div><span>Publisher: Springer</span></div>
-          <div class="pub-mi"><div class="pub-dot"></div><span>Domain: Computer Vision · Precision Agriculture</span></div>
+          <div class="pub-mi"><div class="pub-dot"></div><span>Springer LNNS</span></div>
+          <div class="pub-mi"><div class="pub-dot"></div><span>Computer Vision · Precision Agriculture</span></div>
         </div>
         <div style="margin-top:18px">
           <a href="https://link.springer.com/chapter/10.1007/978-981-96-7753-5_18" target="_blank" class="btn-xs btn-xs-pri">📄 Read on Springer →</a>
@@ -713,7 +750,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
 
 <div class="divider"></div>
 
-<!-- TOOLS & ENVIRONMENT -->
+<!-- TOOLS -->
 <section class="wrap">
   <div class="container">
     <div class="reveal">
@@ -721,12 +758,12 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
       <h2 class="sec-title">Dev <span>Environment</span></h2>
     </div>
     <div class="tools-grid reveal">
-      <div class="tool-card"><div class="tool-ic">🐧</div><div class="tool-name">Ubuntu 20.04 / 22.04</div><div class="tool-cat">OS</div></div>
-      <div class="tool-card"><div class="tool-ic">🤖</div><div class="tool-name">ROS Noetic / Humble</div><div class="tool-cat">Middleware</div></div>
-      <div class="tool-card"><div class="tool-ic">🎮</div><div class="tool-name">Gazebo 11</div><div class="tool-cat">Simulation</div></div>
-      <div class="tool-card"><div class="tool-ic">🧠</div><div class="tool-name">VS Code + Vim</div><div class="tool-cat">Editor</div></div>
+      <div class="tool-card"><div class="tool-ic">🚗</div><div class="tool-name">CARLA Simulator</div><div class="tool-cat">AV Simulation</div></div>
+      <div class="tool-card"><div class="tool-ic">🤖</div><div class="tool-name">ROS 2 Humble / Jazzy</div><div class="tool-cat">Middleware</div></div>
+      <div class="tool-card"><div class="tool-ic">🎮</div><div class="tool-name">Gazebo</div><div class="tool-cat">Robot Simulation</div></div>
+      <div class="tool-card"><div class="tool-ic">🐧</div><div class="tool-name">Ubuntu 22.04 / 24.04</div><div class="tool-cat">OS</div></div>
       <div class="tool-card"><div class="tool-ic">🐍</div><div class="tool-name">Python 3 + NumPy</div><div class="tool-cat">Scripting</div></div>
-      <div class="tool-card"><div class="tool-ic">⚡</div><div class="tool-name">OSQP / CasADi</div><div class="tool-cat">Optimisation</div></div>
+      <div class="tool-card"><div class="tool-ic">🧠</div><div class="tool-name">VS Code</div><div class="tool-cat">Editor</div></div>
       <div class="tool-card"><div class="tool-ic">🔁</div><div class="tool-name">Git + GitHub</div><div class="tool-cat">Version Control</div></div>
       <div class="tool-card"><div class="tool-ic">📊</div><div class="tool-name">MATLAB / Simulink</div><div class="tool-cat">Modelling</div></div>
     </div>
@@ -735,50 +772,49 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
 
 <div class="divider"></div>
 
-<!-- KERALA ROBOTICS COMMUNITY -->
+<!-- COMMUNITY -->
 <section class="wrap alt">
   <div class="container">
     <div class="reveal">
-      <div class="eyebrow">08 // Community</div>
-      <h2 class="sec-title">Kerala Robotics <span>Ecosystem</span></h2>
+      <div class="eyebrow">08 // Network</div>
+      <h2 class="sec-title">Where I've <span>Worked &amp; Studied</span></h2>
     </div>
-    <p class="reveal" style="color:var(--text-mid);font-size:0.96rem;line-height:1.85;max-width:760px;margin-bottom:40px">Kerala has an increasingly vibrant robotics and technology ecosystem — spanning IIT-linked research hubs, active industry players, and strong academic institutions. Being part of this ecosystem has directly shaped my career.</p>
     <div class="community-grid">
       <div class="comm-card reveal">
         <div class="comm-icon">🏛️</div>
-        <div class="comm-title">IIT Palakkad — TIH</div>
-        <div class="comm-sub">Industry-Academia R&D Hub</div>
-        <p class="comm-desc">IIT Palakkad's Technology Innovation Hub sits at the frontier of Kerala's deep-tech scene. Working here on an industry-funded autonomous farming project gave real experience bridging academic robotics research with production-grade development — rare in the region.</p>
+        <div class="comm-title">IIT Bombay</div>
+        <div class="comm-sub">Honda Cars India Ltd. sponsored project</div>
+        <p class="comm-desc">Automotive ADAS research — CARLA-based simulation, perception, and adaptive vehicle control for closed-loop autonomous driving evaluation.</p>
+      </div>
+      <div class="comm-card reveal">
+        <div class="comm-icon">🌾</div>
+        <div class="comm-title">IIT Palakkad</div>
+        <div class="comm-sub">With Mahindra &amp; Mahindra</div>
+        <p class="comm-desc">Autonomous agricultural tractor — ROS 2 navigation, coverage planning, and trajectory tracking taken from simulation to real field trials.</p>
       </div>
       <div class="comm-card reveal">
         <div class="comm-icon">🤖</div>
         <div class="comm-title">Asimov Robotics, Kochi</div>
-        <div class="comm-sub">South India's Premier Robotics Company</div>
-        <p class="comm-desc">Asimov Robotics is one of the most recognised robotics companies in South India. Their humanoid MITRA has been deployed in Apollo Hospitals, SBI branches, and airports. Interning here provided formative exposure to the full product robotics software cycle.</p>
+        <div class="comm-sub">Internship · 2023</div>
+        <p class="comm-desc">Robotic arm motion control, ROS integration, and testing on simulation and hardware at one of Kerala's best-known robotics companies.</p>
       </div>
       <div class="comm-card reveal">
         <div class="comm-icon">🎓</div>
         <div class="comm-title">College of Engineering Trivandrum</div>
-        <div class="comm-sub">M.Tech Robotics — Est. 1939</div>
-        <p class="comm-desc">CET is one of Kerala's oldest and highest-ranked engineering institutions. The M.Tech in Robotics &amp; Automation provides strong foundations in control theory, mechatronics, ROS, and robotic system design — producing engineers who contribute to robotics across India and abroad.</p>
-      </div>
-      <div class="comm-card reveal">
-        <div class="comm-icon">🌾</div>
-        <div class="comm-title">Mahindra + CDAC Collaboration</div>
-        <div class="comm-sub">Agri-Robotics Initiative</div>
-        <p class="comm-desc">Autonomous precision agriculture is a high-priority domain for India. The IIT Palakkad–Mahindra–CDAC project directly addresses mechanisation in Indian farming — an area where robotics engineering from Kerala's institutions is making a tangible national impact.</p>
+        <div class="comm-sub">M.Tech Robotics &amp; Automation</div>
+        <p class="comm-desc">Graduate training in control theory, mechatronics, ROS, and robotic system design; thesis on an autonomous mobile manipulator.</p>
       </div>
       <div class="comm-card reveal">
         <div class="comm-icon">💡</div>
-        <div class="comm-title">GECk — Calicut</div>
-        <div class="comm-sub">Government Engineering College Calicut</div>
-        <p class="comm-desc">B.Tech Electronics and Instrumentation Engineering foundation from GECK — a top government college in northern Kerala. Calicut's engineering community and the University of Calicut's wide network of tech graduates provide a strong base of professional connections in the region.</p>
+        <div class="comm-title">GEC Kozhikode</div>
+        <div class="comm-sub">B.Tech Applied Electronics &amp; Instrumentation</div>
+        <p class="comm-desc">Undergraduate foundation in electronics, instrumentation, and control in northern Kerala.</p>
       </div>
       <div class="comm-card reveal">
         <div class="comm-icon">🔬</div>
-        <div class="comm-title">Springer Research Publication</div>
-        <div class="comm-sub">HITA 2024 — International Conference</div>
-        <p class="comm-desc">Published peer-reviewed CV/AI research at an international conference in Springer proceedings — contributing to Kerala's growing output in computer vision, robotics, and applied AI from engineering institutions across the state.</p>
+        <div class="comm-title">Springer Publication</div>
+        <div class="comm-sub">HITA 2024</div>
+        <p class="comm-desc">Peer-reviewed computer vision research on apple freshness detection, published in Springer LNNS.</p>
       </div>
     </div>
   </div>
@@ -795,7 +831,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
     </div>
     <div class="contact-grid">
       <div class="reveal">
-        <p class="contact-blurb">I'm actively looking for roles in robotics software engineering, autonomous systems R&amp;D, and applied control systems — in India and globally. Whether it's a full-time position, contract work, or a research collaboration, I'd love to hear from you.</p>
+        <p class="contact-blurb">I'm interested in autonomous driving, ADAS, vehicle control, and robotics R&amp;D — in India and globally. For research collaborations or roles in these areas, I'd be glad to hear from you.</p>
         <div class="cinfo-list">
           <a href="mailto:munavirzaman12@gmail.com" class="cinfo">
             <div class="cinfo-ic">✉️</div>
@@ -807,11 +843,11 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
           </a>
           <div class="cinfo">
             <div class="cinfo-ic">📍</div>
-            <div><div class="cinfo-lbl">Location</div><div class="cinfo-val">Calicut (Kozhikode), Kerala, India</div></div>
+            <div><div class="cinfo-lbl">Location</div><div class="cinfo-val">Kozhikode, Kerala, India</div></div>
           </div>
           <div class="cinfo">
-            <div class="cinfo-ic">🎓</div>
-            <div><div class="cinfo-lbl">Education</div><div class="cinfo-val">M.Tech Robotics — College of Engineering Trivandrum</div></div>
+            <div class="cinfo-ic">💼</div>
+            <div><div class="cinfo-lbl">Current</div><div class="cinfo-val">Research Engineer — IIT Bombay</div></div>
           </div>
         </div>
         <div class="socials">
@@ -821,10 +857,10 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
         </div>
       </div>
       <div class="cta-box reveal">
-        <div class="cta-ic">🤖</div>
-        <div class="cta-title">Available for Opportunities</div>
-        <p class="cta-desc">Open to roles in robotics software engineering, autonomous systems, control systems R&amp;D, and applied AI — full-time, contract, or research, India or abroad.</p>
-        <div class="cta-status"><div class="sdot"></div><span>Currently Open to Work</span></div>
+        <div class="cta-ic">🚗</div>
+        <div class="cta-title">Let's Talk Autonomy</div>
+        <p class="cta-desc">Open to conversations about autonomous vehicles, ADAS, vehicle control, and robotics — full-time roles, research positions, or collaborations.</p>
+        <div class="cta-status"><div class="sdot"></div><span>Open to Opportunities</span></div>
         <a href="resume.pdf" class="btn-main" style="width:100%;justify-content:center;margin-bottom:12px">↓ Download Full Resume</a>
         <a href="mailto:munavirzaman12@gmail.com" class="btn-ghost" style="width:100%;justify-content:center">✉️ Send an Email</a>
       </div>
@@ -836,7 +872,7 @@ footer { position: relative; z-index: 1; border-top: 1px solid var(--line); padd
 <footer>
   <div class="foot-inner">
     <div class="foot-brand">Munavir <span>Zaman</span></div>
-    <div class="foot-copy">© 2026 · Robotics Software Engineer · Calicut, Kerala, India</div>
+    <div class="foot-copy">© 2026 · Autonomous Vehicles Engineer · Kozhikode, Kerala, India</div>
     <div class="foot-links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
